@@ -20,3 +20,5 @@ Route::get('/', function () {
 
 
 Route::get('home',[MainController::class,'home']);
+
+Route::get('articles/{slug}',[MainController::class,'show'])->name('article');

@@ -12,4 +12,10 @@ class MainController extends Controller
         $articles =  DB::table('articles')->paginate(5);
         return view('home',['articles'=> $articles]);
     }
+
+    public function show($slug)
+    {
+        $article = Article::where('slug', $slug)->firstOrFail();
+        return view('article', ['article'=>$article]);
+    }
 }

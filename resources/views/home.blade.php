@@ -23,8 +23,7 @@
                             <p class="card-text">{{ $article->title }}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    <a class="btn btn-sm btn-outline-secondary" href="{{ route('article', $article->slug) }}">Lire la suite</a>
                                 </div>
                                 <small class="text-muted">9 mins</small>
                             </div>
