@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,10 +16,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 
-Route::get('home',[MainController::class,'home']);
+Route::redirect('','/home');
+
+Route::get('home',[MainController::class,'home'])->name('articles');
 
 Route::get('articles/{slug}',[MainController::class,'show'])->name('article');
+
+Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
