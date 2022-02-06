@@ -15,9 +15,9 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-end">Titre</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('titre') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="titre" autofocus>
+                                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" autocomplete="titre" autofocus>
 
-                                    @error('titre')
+                                    @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -29,7 +29,7 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-end">Sous titre</label>
 
                                 <div class="col-md-6">
-                                    <input id="subtile" type="text" class="form-control @error('subtile') is-invalid @enderror" name="subtile" value="{{ old('subtitle') }}" required autocomplete="subtitle">
+                                    <input id="subtile" type="text" class="form-control @error('subtile') is-invalid @enderror" name="subtile" value="{{ old('subtitle') }}" autocomplete="subtitle">
 
                                     @error('subtile')
                                     <span class="invalid-feedback" role="alert">
@@ -40,11 +40,11 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">Content</label>
+                                <label for="content" class="col-md-4 col-form-label text-md-end">Content</label>
 
                                 <div class="col-md-6">
 
-                                    <textarea id="password" class="form-control @error('content') is-invalid @enderror" name="content" required autocomplete="contenu"></textarea>
+                                    <textarea id="content" class="form-control @error('content') is-invalid @enderror" name="content"  autocomplete="contenu"></textarea>
 
                                     @error('content')
                                     <span class="invalid-feedback" role="alert">

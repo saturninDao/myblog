@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\App;
 
 class ArticleController extends Controller
 {
@@ -32,16 +34,17 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Request\ArticleRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
        // dd($request->request->get('titre'));
+        $validated = $request->validated();
         Article::create([
-            'title'=>$request->request->get('title'),
-            'subtile'=>$request->request->get('subtile'),
-            'content'=> $request->request->get('content'),
+            'title'=>$request->input('title'),
+            'subtile'=>$request->input('subtile'),
+            'content'=> $request->input('content'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
