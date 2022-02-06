@@ -12,6 +12,11 @@
                 </li>
             </ul>
             <div class="d-flex">
+                @if(Auth::user())
+                    @if(Auth::user()->role == "ADMIN")
+                        <a class="btn btn-outline-success" href="{{ route('admin.index')}}">Espace Admin</a>
+                    @endif
+                @endif
                 @if (Auth::user())
                     <form method="POST" action="/logout">
                         @csrf

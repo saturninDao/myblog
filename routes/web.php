@@ -26,7 +26,7 @@ Route::get('home',[MainController::class,'home'])->name('articles');
 
 Route::get('articles/{slug}',[MainController::class,'show'])->name('article');
 
-Route::get('admin/articles',[ArticleController::class,'index'])->middleware('admin');
+Route::get('admin/articles',[ArticleController::class,'index'])->middleware('admin')->name('admin.index');
 
 Auth::routes();
 
