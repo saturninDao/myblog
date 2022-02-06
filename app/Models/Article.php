@@ -11,4 +11,8 @@ class Article extends Model
 
     protected $fillable = ['title', 'subtile', 'content','slug'];
 
+    public function format_date(){
+        return date_format($this->created_at, 'd-m-y h:i');
+    }
+
 }
