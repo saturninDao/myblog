@@ -5,6 +5,9 @@
 <div class="mt-5 container">
     <h1 class="mt-5 display-2">Liste des articles</h1>
 
+
+    <a class="link-info" href="{{ route('admin.new') }}"> Ajouter un article</a>
+
     <table class="table table-hover">
         <thead>
         <tr>

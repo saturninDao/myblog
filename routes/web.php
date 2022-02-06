@@ -30,4 +30,9 @@ Route::get('admin/articles',[ArticleController::class,'index'])->middleware('adm
 
 Auth::routes();
 
+Route::get('admin/articles/new', [ArticleController::class,'create'])->middleware('admin')->name('admin.new');
+
+Route::post('admin/articles/store',[ArticleController::class,'store'])->middleware('admin')->name('admin.store');
+
+
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
