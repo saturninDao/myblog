@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -19,12 +20,13 @@ Route::get('/', function () {
     return view('home');
 });
 
-
 Route::redirect('','/home');
 
 Route::get('home',[MainController::class,'home'])->name('articles');
 
 Route::get('articles/{slug}',[MainController::class,'show'])->name('article');
+
+Route::get('admin/articles',[ArticleController::class,'index'])->middleware('admin');
 
 Auth::routes();
 
