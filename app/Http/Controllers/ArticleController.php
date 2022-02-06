@@ -49,7 +49,7 @@ class ArticleController extends Controller
             'updated_at' => Carbon::now(),
         ]);
 
-       return redirect('/home');
+       return redirect()->route('admin.index')->with('success','L\'article a bien été sauvegardé');
 
     }
 

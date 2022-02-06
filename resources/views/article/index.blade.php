@@ -3,6 +3,12 @@
 @section('content')
 
 <div class="mt-5 container">
+    @if($message = Session::get('success') )
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{$message}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <h1 class="mt-5 display-2">Liste des articles</h1>
 
 
