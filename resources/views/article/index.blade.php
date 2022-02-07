@@ -38,7 +38,11 @@
                     <button type="button" class="btn btn-warning">Modifier</button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger">Supprimer</button>
+                    <form action="{{ route('admin.destroy', $article->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
                 </td>
             </tr>
         @endforeach
