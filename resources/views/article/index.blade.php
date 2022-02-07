@@ -30,12 +30,12 @@
             <tr>
                 <th scope="row">{{ $article->id }}</th>
                 <td>{{ $article->title }}</td>
-                <td>{{ $article->subtitle }}</td>
+                <td>{{ $article->subtile }}</td>
                 <td>{{ $article->content }}</td>
                 <td>{{ $article->format_date() }}</td>
                 <td>{{ $article->updated_at }}</td>
                 <td>
-                    <button type="button" class="btn btn-warning">Modifier</button>
+                    <a class="btn btn-warning" href="{{ route('admin.edit', ['article'=>$article]) }}">Modifier</a>
                 </td>
                 <td>
                     <form action="{{ route('admin.destroy', $article->id) }}" method="POST">

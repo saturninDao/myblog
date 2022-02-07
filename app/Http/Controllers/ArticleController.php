@@ -70,9 +70,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //
+        return view('article.edit',['article'=>$article]);
     }
 
     /**
@@ -82,21 +82,27 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, Article $article)
     {
-        //
+        $article->title = $request->input('title');
+        $article->subtile = $request->input('subtile');
+        $article->content = $request->input('content');
+        $article->updated_at = Carbon::now();
+        $article->save();
+
+        return redirect()->route('admin.index')->with('success','L\'article a bien été modifié');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Article $article)
     {
         //dd($article);
         $article->delete();
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('success', 'L\'article a bien été supprimé');
     }
 }
