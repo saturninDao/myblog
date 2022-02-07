@@ -17,6 +17,7 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
+        /*
         $faker = Factory::create();
         for($i=0;$i<25;$i++){
             Article::create([
@@ -26,5 +27,14 @@ class ArticleSeeder extends Seeder
                 'category_id'=> Category::inRandomOrder()->first()->id
             ]);
         }
+        */
+
+        Category::get()->each(function ($category){
+            \App\Models\Article::factory(5)->create(
+                [
+                    'category_id'=> $category->id
+                ]
+            );
+        });
     }
 }

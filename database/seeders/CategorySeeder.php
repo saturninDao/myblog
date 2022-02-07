@@ -18,11 +18,15 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
+        /*
         $categories = ['sport','IT', 'Maths'];
         for($i=0;$i<count($categories);$i++){
             Category::create([
                 'label'=> $categories[$i]
             ]);
         }
+        */
+
+        \App\Models\Category::factory(5)->create();
     }
 }
