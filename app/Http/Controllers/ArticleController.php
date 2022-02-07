@@ -3,13 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ArticleRequest;
+use App\Manager\ArticleManager;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\App;
 
+/**
+ *
+ */
 class ArticleController extends Controller
 {
+    private $articleManager;
+    public function __construct(ArticleManager $articleManager){
+        $this->articleManager = $articleManager;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -33,14 +41,14 @@ class ArticleController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  App\Http\Request\ArticleRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(ArticleRequest $request)
     {
        // dd($request->request->get('titre'));
         $validated = $request->validated();
+        $this->articleManager->build(new Article(), $request);
+        /*
         Article::create([
             'title'=>$request->input('title'),
             'subtile'=>$request->input('subtile'),
@@ -48,8 +56,8 @@ class ArticleController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
-       return redirect()->route('admin.index')->with('success','L\'article a bien été sauvegardé');
+*/
+       return redirect()->route('articles.index')->with('success','L\'article a bien été sauvegardé');
 
     }
 
@@ -80,17 +88,13 @@ class ArticleController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(ArticleRequest $request, Article $article)
     {
-        $article->title = $request->input('title');
-        $article->subtile = $request->input('subtile');
-        $article->content = $request->input('content');
-        $article->updated_at = Carbon::now();
-        $article->save();
+        $this->articleManager->build($article,$request);
 
-        return redirect()->route('admin.index')->with('success','L\'article a bien été modifié');
+        return redirect()->route('articles.index')->with('success','L\'article a bien été modifié');
     }
 
     /**
@@ -103,6 +107,6 @@ class ArticleController extends Controller
     {
         //dd($article);
         $article->delete();
-        return redirect()->route('admin.index')->with('success', 'L\'article a bien été supprimé');
+        return redirect()->route('articles.index')->with('success', 'L\'article a bien été supprimé');
     }
 }

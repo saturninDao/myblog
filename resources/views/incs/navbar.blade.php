@@ -14,7 +14,7 @@
             <div class="d-flex">
                 @if(Auth::user())
                     @if(Auth::user()->role == "ADMIN")
-                        <a class="btn btn-outline-success" href="{{ route('admin.index')}}">Espace Admin</a>
+                        <a class="btn btn-outline-success" href="{{ route('articles.index')}}">Espace Admin</a>
                     @endif
                 @endif
                 @if (Auth::user())

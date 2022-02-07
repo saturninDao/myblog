@@ -8,7 +8,7 @@
                     <div class="card-header">Ajout d'un nouvel article</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admin.store') }}">
+                        <form method="POST" action="{{ route('articles.store') }}">
                             @csrf
 
                             <div class="row mb-3">

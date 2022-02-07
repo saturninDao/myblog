@@ -8,7 +8,7 @@
                     <div class="card-header">Modifier d'un article</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admin.update',$article->id) }}">
+                        <form method="POST" action="{{ route('articles.update',$article->id) }}">
                             @csrf
                             @method('PUT')
                             <div class="row mb-3">

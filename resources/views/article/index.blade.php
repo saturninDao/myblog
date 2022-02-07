@@ -12,7 +12,7 @@
     <h1 class="mt-5 display-2">Liste des articles</h1>
 
 
-    <a class="link-info" href="{{ route('admin.new') }}"> Ajouter un article</a>
+    <a class="link-info" href="{{ route('articles.create') }}"> Ajouter un article</a>
 
     <table class="table table-hover">
         <thead>
@@ -35,10 +35,10 @@
                 <td>{{ $article->format_date() }}</td>
                 <td>{{ $article->updated_at }}</td>
                 <td>
-                    <a class="btn btn-warning" href="{{ route('admin.edit', ['article'=>$article]) }}">Modifier</a>
+                    <a class="btn btn-warning" href="{{ route('articles.edit', $article) }}">Modifier</a>
                 </td>
                 <td>
-                    <form action="{{ route('admin.destroy', $article->id) }}" method="POST">
+                    <form action="{{ route('articles.destroy', $article->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Supprimer</button>
