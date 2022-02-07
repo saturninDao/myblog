@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ArticleRequest;
 use App\Manager\ArticleManager;
 use App\Models\Article;
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\App;
+use App\Models\Category;
 
 /**
  *
@@ -21,7 +19,7 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
@@ -32,11 +30,13 @@ class ArticleController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
-        return view('article.create');
+        return view('article.create',[
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -80,7 +80,11 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('article.edit',['article'=>$article]);
+        return view('article.edit', [
+            'article'=>$article,
+                'categories'=>Category::all()
+            ]
+        );
     }
 
     /**

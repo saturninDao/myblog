@@ -39,6 +39,28 @@
                                 </div>
                             </div>
 
+
+                            <div class="row mb-3">
+                                <label for="category" class="col-md-4 col-form-label text-md-end">Catégorie</label>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select name="category" class="form-select" id="exampleSelect1">
+                                            @foreach($categories as $categorie)
+                                                <option value="{{$categorie->id}}" {{ $categorie->id===$article->category->id ? 'selected':'' }}>{{$categorie->label}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    @error('category_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+
                             <div class="row mb-3">
                                 <label for="content" class="col-md-4 col-form-label text-md-end">Content</label>
 
