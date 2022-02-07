@@ -25,7 +25,7 @@
                                 <div class="btn-group">
                                     <a class="btn btn-sm btn-outline-secondary" href="{{ route('article', $article->slug) }}">Lire la suite</a>
                                 </div>
-                                <small class="text-muted">9 mins</small>
+                                <small class="text-muted">{{$article->category->label}}</small>
                             </div>
                         </div>
                     </div>

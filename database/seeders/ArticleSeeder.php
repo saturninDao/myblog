@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Article;
+use App\Models\Category;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class ArticleSeeder extends Seeder
@@ -24,8 +23,7 @@ class ArticleSeeder extends Seeder
                 'title' => Str::random(10),
                 'subtile' => Str::random(10).'@gmail.com',
                 'content' =>  $faker->text,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'category_id'=> Category::inRandomOrder()->first()->id
             ]);
         }
     }

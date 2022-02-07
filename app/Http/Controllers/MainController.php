@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 class MainController extends Controller
 {
     public function home(){
-        $articles =  DB::table('articles')->paginate(5);
+        //$articles =  DB::table('articles')->paginate(5);
+        $articles = Article::paginate(5);
         return view('home',['articles'=> $articles]);
     }
 
